@@ -10,7 +10,7 @@
 set -euo pipefail
 
 # === Config ===
-DATE=$(date +"%d%b%Y_%H%M")
+DATE=$(date +"%d%b%Y_%H:%M")
 LOG_DIR="/var/log/aws-monitor"
 LOG_FILE="$LOG_DIR/tracker_$DATE.log"
 
