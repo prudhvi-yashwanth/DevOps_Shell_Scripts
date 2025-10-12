@@ -8,6 +8,7 @@
 ##################################################
 
 set -euo pipefail
+#set -x # Uncomment for debugging
 
 # ==== Configuration File ====
 DATE=$(date +"%d-%b-%Y_%H:%M:%S")
