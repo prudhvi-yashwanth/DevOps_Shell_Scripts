@@ -26,7 +26,7 @@ echo -e "\n=== Log Files Monitoring Report ===" | tee -a "$LOG_FILE"
 echo "Generated on: $(date)" | tee -a "$LOG_FILE"
 echo "========================================================" | tee -a "$LOG_FILE"
 
-log_files=$(find /var/log -type f -name "*.log" -mtime -1)
+log_files=$(find /var/log -type f -name "*.log" -mtime -1 -print 2>/dev/null || true)
 
 if [ -z "$log_files" ]; then
     echo "No log files modified in the last 24 hours." | tee -a "$LOG_FILE"
@@ -63,3 +63,13 @@ check_log_files() {
 check_log_files
 echo -e "\n=== Log Monitoring Completed ===" | tee -a "$LOG_FILE"
 echo "Report saved to $LOG_FILE"
+
+
+
+# End of Script
+# To make the script executable: chmod +x Auto_log_monitor.sh
+# To run the script: sudo ./Auto_log_monitor.sh
+# To schedule via cron, add the following line to crontab (runs daily at 2 AM):
+# 0 2 * * * /path/to/Log_Files_Monitor/Auto_log_monitor.sh
+# To sheduler via cron, to run for every 12 hours, add the following line to crontab:
+# 0 */12 * * * /path/to/Log_Files_Monitor/Auto_log_monitor.sh
